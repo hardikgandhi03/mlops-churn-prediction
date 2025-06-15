@@ -1,0 +1,18 @@
+stages:
+  prepare:
+    cmd: python notebooks/1_data_exploration.ipynb
+    deps:
+      - raw_data/WA_Fn-UseC_-Telco-Customer-Churn.csv
+      - notebooks/1_data_exploration.ipynb
+    outs:
+      - data/cleaned.csv
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - data/cleaned.csv
+      - src/train.py
+      - src/data_loader.py
+    outs:
+      - model/
+      - classification_report.txt
