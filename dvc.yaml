@@ -1,9 +1,9 @@
 stages:
   prepare:
-    cmd: python notebooks/1_data_exploration.ipynb
+    cmd: python notebooks/1_data_exploration.py
     deps:
       - raw_data/WA_Fn-UseC_-Telco-Customer-Churn.csv
-      - notebooks/1_data_exploration.ipynb
+      - notebooks/1_data_exploration.py
     outs:
       - data/cleaned.csv
 
