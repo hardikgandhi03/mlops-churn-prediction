@@ -1,35 +1,32 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[2]:
-
-
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+import os
 
+# Load dataset
+RAW_PATH = "raw_data/WA_Fn-UseC_-Telco-Customer-Churn.csv"
+OUTPUT_PATH = "data/cleaned.csv"
 
-# In[3]:
+# Ensure output directory exists
+os.makedirs("data", exist_ok=True)
 
+# Read CSV
+df = pd.read_csv(RAW_PATH)
 
-df = pd.read_csv('../raw_data/WA_Fn-UseC_-Telco-Customer-Churn.csv')
+# Replace empty strings in 'TotalCharges' and convert to numeric
+df['TotalCharges'] = pd.to_numeric(df['TotalCharges'].replace(" ", pd.NA), errors='coerce')
 
+# Drop rows with missing values
+df = df.dropna()
 
-# In[4]:
+# Drop customerID column
+df = df.drop(columns=["customerID"])
 
+# Convert target to binary
+df['Churn'] = df['Churn'].map({"Yes": 1, "No": 0})
 
-# Quick view
-print(df.shape)
-print(df.head())
-print(df.isnull().sum())
-print(df['Churn'].value_counts())
+# Convert categorical columns to dummy variables
+df = pd.get_dummies(df, drop_first=True)
 
+# Save cleaned dataset
+df.to_csv(OUTPUT_PATH, index=False)
 
-# In[5]:
-
-
-# Class balance
-sns.countplot(data=df, x='Churn')
-plt.title("Class Balance - Churn")
-plt.show()
-
+print(f"✅ Cleaned data written to: {OUTPUT_PATH}")

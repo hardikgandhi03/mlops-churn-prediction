@@ -9,3 +9,5 @@ models/
 *.log
 mlruns/
 /models
+/model
+/classification_report.txt

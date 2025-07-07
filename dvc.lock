@@ -1,0 +1,43 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python notebooks/1_data_exploration.py
+    deps:
+    - path: notebooks/1_data_exploration.py
+      hash: md5
+      md5: 03d0e860b32214a895c471bd20ca732c
+      size: 833
+    - path: raw_data/WA_Fn-UseC_-Telco-Customer-Churn.csv
+      hash: md5
+      md5: 0f9de68e012bd3aed5fa7cdc9fc421af
+      size: 977501
+    outs:
+    - path: data/cleaned.csv
+      hash: md5
+      md5: 67d02339bdac53bb482ee2fbce559217
+      size: 1180807
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/cleaned.csv
+      hash: md5
+      md5: 67d02339bdac53bb482ee2fbce559217
+      size: 1180807
+    - path: src/data_loader.py
+      hash: md5
+      md5: 7012a71269776cc723ead196191168d4
+      size: 434
+    - path: src/train.py
+      hash: md5
+      md5: d1b47c69dc017a971e17bdc406605f98
+      size: 1271
+    outs:
+    - path: classification_report.txt
+      hash: md5
+      md5: b23e60c3a75a89c796bc8efb680db198
+      size: 334
+    - path: model/
+      hash: md5
+      md5: 2ae41ed3f7a3b7e821b2f3620e7a1f61.dir
+      size: 18904714
+      nfiles: 5
