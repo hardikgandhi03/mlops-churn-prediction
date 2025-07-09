@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+.venv/
+venv/
+.dvc/cache/
+.dvc/tmp/
+mlruns/
+data/
+# model/
+.git/
+.dvc/
