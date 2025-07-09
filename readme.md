@@ -175,8 +175,3 @@ Made with ❤️ by **Hardik Gandhi**
 ```
 
 ---
-
-✅ Now it's a **single clean Markdown file**, 100% GitHub-ready, and completely formatted.
-
-Let me know once you’ve committed it — and I’ll help you write résumé bullets next.
-
