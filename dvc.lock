@@ -41,3 +41,32 @@ stages:
       md5: 2ae41ed3f7a3b7e821b2f3620e7a1f61.dir
       size: 18904714
       nfiles: 5
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/cleaned.csv
+      hash: md5
+      md5: 67d02339bdac53bb482ee2fbce559217
+      size: 1180807
+    - path: model
+      hash: md5
+      md5: 2ae41ed3f7a3b7e821b2f3620e7a1f61.dir
+      size: 18904714
+      nfiles: 5
+    - path: src/evaluate.py
+      hash: md5
+      md5: 1b922abd5bcd04587f855e3fda82d6bd
+      size: 1432
+    outs:
+    - path: confusion_matrix.png
+      hash: md5
+      md5: 31f6114a8d863d82229b17492fc4affc
+      size: 17641
+    - path: metrics.txt
+      hash: md5
+      md5: 3a6f231a2f995922267e65256e659047
+      size: 36
+    - path: roc_curve.png
+      hash: md5
+      md5: 2b8c8c78ae741407e94e996b0be459c4
+      size: 36170

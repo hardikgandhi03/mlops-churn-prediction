@@ -2,17 +2,27 @@ stages:
   prepare:
     cmd: python notebooks/1_data_exploration.py
     deps:
-      - raw_data/WA_Fn-UseC_-Telco-Customer-Churn.csv
-      - notebooks/1_data_exploration.py
+    - raw_data/WA_Fn-UseC_-Telco-Customer-Churn.csv
+    - notebooks/1_data_exploration.py
     outs:
-      - data/cleaned.csv
+    - data/cleaned.csv
 
   train:
     cmd: python src/train.py
     deps:
-      - data/cleaned.csv
-      - src/train.py
-      - src/data_loader.py
+    - data/cleaned.csv
+    - src/train.py
+    - src/data_loader.py
     outs:
-      - model/
-      - classification_report.txt
+    - model/
+    - classification_report.txt
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - data/cleaned.csv
+    - model
+    - src/evaluate.py
+    outs:
+    - confusion_matrix.png
+    - metrics.txt
+    - roc_curve.png
