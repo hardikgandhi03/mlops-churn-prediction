@@ -1,6 +1,9 @@
 # 🚀 Churn Prediction MLOps Pipeline
 
-This project demonstrates a production-grade MLOps pipeline for predicting telecom customer churn. It includes reproducible data preparation, model training with MLflow tracking, evaluation with visualizations, and a real-time prediction API served via FastAPI — all containerized with Docker.
+Customer churn refers to when a customer stops using a company’s services — in telecom, this often means cancelling a subscription.  
+This project predicts whether a customer is likely to churn based on usage behavior and demographic features.
+
+It implements a full MLOps pipeline using DVC and MLflow — from data ingestion to model training, evaluation, and real-time prediction through a FastAPI endpoint, all containerized using Docker.
 
 ---
 
@@ -172,6 +175,3 @@ F1 Score: 0.68
 Made with ❤️ by **Hardik Gandhi**  
 🔗 [LinkedIn](https://www.linkedin.com/in/hardik-gandhi/)  
 📧 hmgandhi03@gmail.com 
-```
-
----
